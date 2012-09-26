@@ -1,0 +1,1 @@
+This chapter examines sets and maps.  These are unordered collections. A set consists of unique elements. A map associates a set of keys with values.
