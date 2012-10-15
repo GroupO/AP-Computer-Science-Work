@@ -44,7 +44,7 @@ public class WageCalculator
 		double totalPay = hourlyWage * regularHours + hourlyWage * 1.5 * overtimeHours;
 		
 		//Return data.
-		System.out.println("Employee "+employeeID+" earned $"+totalPay+" this pay period.");
+		System.out.println("Employee "+employeeID+" earned $"+this.round2(totalPay)+" this pay period.");
 		
 		System.exit(0);
 	}
@@ -61,5 +61,20 @@ public class WageCalculator
 		Scanner reader = new Scanner(System.in);
 		double input = reader.nextDouble();
 		return input;
+	}
+	
+	/**
+	 * Rounds a double to two decimal places.
+	 * @param num The number to round.
+	 * @return A double, rounded to two decimal places.
+	 */
+	private double round2(double num)
+	{
+		double num1 = num*100;
+		num1 = num1+.5;
+		int num2 = (int)num1;
+		num1 = (double)num2;
+		num1 = num1/100;
+		return num1;
 	}
 }
