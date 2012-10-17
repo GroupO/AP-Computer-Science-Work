@@ -30,23 +30,42 @@ public class WageCalculator
 	}
 	
 	/**
-	 * Runs the calculations.
+	 * Runs the wage calculations.
 	 */
 	public void run()
 	{
 		//Collect data.
-		int employeeID = (int)this.promptForInput("What is the employee ID?");
-		double hourlyWage = this.promptForInput("What is the hourly wage of employee "+employeeID+"?");
-		double regularHours = this.promptForInput("How many regular hours has employee "+employeeID+" worked?");
-		double overtimeHours = this.promptForInput("How many overtime hours has employee "+employeeID+" worked?");
+		int employeeID = (int)this.promptForDoubleInput("What is the employee ID?");
+		String employeeName = this.promptForStringInput("What is the employee's first name?")+" "
+				 			  +this.promptForStringInput("What is the employee's last name?");
+		double hourlyWage = this.promptForDoubleInput("What is the hourly wage of employee "
+				 			+employeeID+"?");
+		double regularHours = this.promptForDoubleInput("How many regular hours has employee "
+							  +employeeID+" worked?");
+		double overtimeHours = this.promptForDoubleInput("How many overtime hours has employee "
+							   +employeeID+" worked?");
 		
 		//Process Data
-		double totalPay = hourlyWage * regularHours + hourlyWage * 1.5 * overtimeHours;
+		double totalPay = findTotalPay(hourlyWage, regularHours, overtimeHours);
 		
 		//Return data.
-		System.out.println("Employee "+employeeID+" earned $"+this.round2(totalPay)+" this pay period.");
+		System.out.println("Employee "+employeeName+" ("+employeeID+")"
+							+" earned $"+this.round2(totalPay)+" this pay period.");
 		
 		System.exit(0);
+	}
+	
+	/**
+	 * Calculates the total pay of the employee.
+	 * 
+	 * @param hourlyWage The employee's hourly wage.
+	 * @param regularHours The total number of regular hours worked by the employee.
+	 * @param overtimeHours The total number of overitme hours worked by the employee.
+	 * @return A double, the total pay of the employee.
+	 */
+	private double findTotalPay(double hourlyWage, double regularHours, double overtimeHours)
+	{
+		return hourlyWage * regularHours + hourlyWage * 1.5 * overtimeHours;
 	}
 	
 	/**
@@ -54,12 +73,30 @@ public class WageCalculator
 	 * @param prompt The prompt to ask for input.
 	 * @return A double, what the user typed in in response to the prompt.
 	 */
-	private double promptForInput(String prompt)
+	private double promptForDoubleInput(String prompt)
 	{
+		//Prompt the user
 		System.out.println(prompt);
 		
+		//Read in the double.
 		Scanner reader = new Scanner(System.in);
 		double input = reader.nextDouble();
+		return input;
+	}
+	
+	/**
+	 * Asks the user for input, and returns the input provided.
+	 * @param prompt The prompt to ask for input.
+	 * @return A string, what the user typed in in response to the prompt.
+	 */
+	private String promptForStringInput(String prompt)
+	{
+		//Prompt the user
+		System.out.println(prompt);
+		
+		//Read in the double.
+		Scanner reader = new Scanner(System.in);
+		String input = reader.nextLine();
 		return input;
 	}
 	
