@@ -37,15 +37,36 @@ public class WageCalculator
 		//Collect data.
 		int employeeID = (int)this.promptForDoubleInput("What is the employee ID?");
 		String employeeName = this.promptForStringInput("What is the employee's full name?");
-		double hourlyWage = this.promptForDoubleInput("What is the hourly wage of employee "+employeeID+"?");
-		double regularHours = this.promptForDoubleInput("How many regular hours has employee "+employeeID+" worked?");
-		double overtimeHours = this.promptForDoubleInput("How many overtime hours has employee "+employeeID+" worked?");
+		
+		double hourlyWage = this.promptForDoubleInput(
+				"What is "+employeeName+"'s hourly wage?");
+		
+		double regularHours = this.promptForDoubleInput(
+				"How many regular hours did "+employeeName+" work on Monday?");
+		double overtimeHours = this.promptForDoubleInput(
+				"How many overtime hours did "+employeeName+" work on Monday?");
+		regularHours = regularHours + this.promptForDoubleInput(
+				"How many regular hours did "+employeeName+" work on Tuesday?");
+		overtimeHours = overtimeHours + this.promptForDoubleInput(
+				"How many overtime hours did "+employeeName+" work on Tuesday?");
+		regularHours = regularHours + this.promptForDoubleInput(
+				"How many regular hours did "+employeeName+" work on Wednesday?");
+		overtimeHours = overtimeHours + this.promptForDoubleInput(
+				"How many overtime hours did "+employeeName+" work on Wednesday?");
+		regularHours = regularHours + this.promptForDoubleInput(
+				"How many regular hours did "+employeeName+" work on Thursday?");
+		overtimeHours = overtimeHours + this.promptForDoubleInput(
+				"How many overtime hours did "+employeeName+" work on Thursday?");
+		regularHours = regularHours + this.promptForDoubleInput(
+				"How many regular hours did "+employeeName+" work on Friday?");
+		overtimeHours = overtimeHours + this.promptForDoubleInput(
+				"How many overtime hours did "+employeeName+" work on Friday?");
 		
 		//Process Data
 		double totalPay = findTotalPay(hourlyWage, regularHours, overtimeHours);
 		
 		//Return data.
-		System.out.println("Employee "+employeeName+" ("+employeeID+")"+" earned $"+this.round2(totalPay)+" this pay period.");
+		System.out.println("Employee "+employeeName+" ("+employeeID+")"+" earned $"+this.round2(totalPay)+" this week.");
 		
 		System.exit(0);
 	}
