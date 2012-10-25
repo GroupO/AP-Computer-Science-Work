@@ -91,7 +91,7 @@ public class WageCalculator
 		employeeName = tokenizer.nextToken()+" "+tokenizer.nextToken();
 		hourlyWage = Double.parseDouble(tokenizer.nextToken());
 		
-		for (int i=0; i<tokenizer.countTokens(); i++)
+		for (int i=0; i<5; i++)
 		{
 			regularHours = regularHours + Double.parseDouble(tokenizer.nextToken());
 			overtimeHours = overtimeHours + Double.parseDouble(tokenizer.nextToken());

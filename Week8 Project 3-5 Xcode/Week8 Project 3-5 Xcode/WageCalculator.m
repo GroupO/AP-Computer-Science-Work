@@ -10,7 +10,7 @@
 
 @implementation WageCalculator
 
-@synthesize hourlyWage, overtimeHours, regularHours, totalPay, data, employeeName;
+@synthesize hourlyWage, overtimeHours, regularHours, data, employeeName;
 
 /**
  Run the program.
@@ -19,7 +19,7 @@
 {
 	[self openFile:@"/Users/arthurlockman/Dropbox/School/AP CS/Work/Data Files/VHSP35data1_1.txt"];
 	[self parseData];
-	NSLog(@"Employee %@ earned %f this pay period.",employeeName,[self calculatePay]);
+	NSLog(@"Employee %@ earned %@ this pay period.",employeeName,[self round2:[self calculatePay] andFormat:NSNumberFormatterCurrencyStyle]);
 }
 
 /**
@@ -59,4 +59,20 @@
 {
 	return hourlyWage * regularHours + hourlyWage * 1.5 * overtimeHours;
 }
+
+/**
+ Round a double to two decimal places.
+ @param number The number to round.
+ @param style The style to format the number in.
+ @return An NSString, the formatted rounded number.
+ */
+- (NSString*) round2:(double)number andFormat:(NSNumberFormatterStyle)style
+{
+	NSNumberFormatter* formatter = [NSNumberFormatter new];
+	[formatter setNumberStyle:style];
+	NSNumber* num1 = [NSNumber numberWithDouble:number];
+	NSString* num = [formatter stringFromNumber:num1];
+	return num;
+}
+
 @end
