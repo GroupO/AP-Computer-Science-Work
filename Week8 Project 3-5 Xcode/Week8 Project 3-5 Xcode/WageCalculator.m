@@ -19,7 +19,7 @@
 {
 	[self openFile:@"/Users/arthurlockman/Dropbox/School/AP CS/Work/Data Files/VHSP35data1_1.txt"];
 	[self parseData];
-	NSLog(@"Employee %@ earned %@ this pay period.",employeeName,[self round2:[self calculatePay] andFormat:NSNumberFormatterCurrencyStyle]);
+	NSLog(@"Employee %@ earned %@ this week.",employeeName,[self round2:[self calculatePay] andFormat:NSNumberFormatterCurrencyStyle]);
 }
 
 /**
@@ -32,7 +32,10 @@
 	data = [[NSString alloc] initWithContentsOfFile:filePath
 										   encoding:NSUTF8StringEncoding error:&fOpenError];
 	if (data == nil)
+	{
 		NSLog(@"%@",[fOpenError localizedFailureReason]);
+		exit(1);
+	}
 }
 
 /**
@@ -70,8 +73,7 @@
 {
 	NSNumberFormatter* formatter = [NSNumberFormatter new];
 	[formatter setNumberStyle:style];
-	NSNumber* num1 = [NSNumber numberWithDouble:number];
-	NSString* num = [formatter stringFromNumber:num1];
+	NSString* num = [formatter stringFromNumber:[NSNumber numberWithDouble:number]];
 	return num;
 }
 

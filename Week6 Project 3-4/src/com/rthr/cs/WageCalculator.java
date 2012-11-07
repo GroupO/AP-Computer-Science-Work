@@ -41,26 +41,8 @@ public class WageCalculator
 		double hourlyWage = this.promptForDoubleInput(
 				"What is "+employeeName+"'s hourly wage?");
 		
-		double regularHours = this.promptForDoubleInput(
-				"How many regular hours did "+employeeName+" work on Monday?");
-		double overtimeHours = this.promptForDoubleInput(
-				"How many overtime hours did "+employeeName+" work on Monday?");
-		regularHours = regularHours + this.promptForDoubleInput(
-				"How many regular hours did "+employeeName+" work on Tuesday?");
-		overtimeHours = overtimeHours + this.promptForDoubleInput(
-				"How many overtime hours did "+employeeName+" work on Tuesday?");
-		regularHours = regularHours + this.promptForDoubleInput(
-				"How many regular hours did "+employeeName+" work on Wednesday?");
-		overtimeHours = overtimeHours + this.promptForDoubleInput(
-				"How many overtime hours did "+employeeName+" work on Wednesday?");
-		regularHours = regularHours + this.promptForDoubleInput(
-				"How many regular hours did "+employeeName+" work on Thursday?");
-		overtimeHours = overtimeHours + this.promptForDoubleInput(
-				"How many overtime hours did "+employeeName+" work on Thursday?");
-		regularHours = regularHours + this.promptForDoubleInput(
-				"How many regular hours did "+employeeName+" work on Friday?");
-		overtimeHours = overtimeHours + this.promptForDoubleInput(
-				"How many overtime hours did "+employeeName+" work on Friday?");
+		double regularHours = this.promptForDoubleInput("How many regular hours did "+employeeName+" work?");
+		double overtimeHours = this.promptForDoubleInput("How many overtime hours did "+employeeName+" work?");
 		
 		//Process Data
 		double totalPay = findTotalPay(hourlyWage, regularHours, overtimeHours);
