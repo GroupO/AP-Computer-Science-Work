@@ -8,6 +8,8 @@
  */
 package com.rthr.cs;
 
+import java.util.Scanner;
+
 /**
  * This class plays the number game.
  * In a game of guessing numbers, one person 
@@ -27,13 +29,14 @@ package com.rthr.cs;
 public class NumberGame
 {
 	private int guesses, answer;
+	private Boolean correct = false;
 	
 	/**
 	 * Constructs the number game.
 	 */
 	public NumberGame()
 	{
-		//Create random number generator.
+		answer = this.getRandomNumber();
 	}
 	
 	/**
@@ -42,10 +45,42 @@ public class NumberGame
 	 */
 	public Boolean play()
 	{
-		//Accept guess
-		//Print whether greater or less
+		System.out.println("Let's play a game.\nI'm thinking " +
+				"of a number between 1 and 100. Can you guess what it is?" +
+				"\n(Please input a counting number as your guess, i.e. 1, 2, 3, 4)");
+		while (!correct)
+		{
+			guesses++;
+			
+			int guess = this.getGuess();
+			if (guess == answer)
+				correct = true;
+			else if (guess > answer)
+				System.out.println("The number is less than your guess.");
+			else if (guess < answer)
+				System.out.println("The number is greater than your guess.");
+		}
 		finishGame();
 		return false;
+	}
+	
+	/**
+	 * Gets a guess from the player.
+	 * @return An int, the guess the player entered.
+	 */
+	private int getGuess()
+	{
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextInt();
+	}
+	
+	/**
+	 * Get a random number to play the game.
+	 * @return A random int, from 1 to 100.
+	 */
+	private int getRandomNumber()
+	{
+		return 1 + (int)(Math.random() * ((100 - 1) + 1));
 	}
 	
 	/**
@@ -53,6 +88,7 @@ public class NumberGame
 	 */
 	private void finishGame()
 	{
-		System.out.println("You guessed "+guesses+" times to get the correct answer "+answer);
+		System.out.println("That's correct!\nYou guessed "+guesses+
+				" times to get the correct answer "+answer);
 	}
 }
