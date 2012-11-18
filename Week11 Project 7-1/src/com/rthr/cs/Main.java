@@ -22,7 +22,7 @@ public class Main
 	{
 		NumberGame numberGame = new NumberGame();
 		
-		if (numberGame.play())
-			System.exit(0);
+		numberGame.play();
+		System.exit(0);
 	}
 }

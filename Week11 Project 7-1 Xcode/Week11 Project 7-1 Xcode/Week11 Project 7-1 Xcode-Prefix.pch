@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Week11 Project 7-1 Xcode' target in the 'Week11 Project 7-1 Xcode' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+#endif

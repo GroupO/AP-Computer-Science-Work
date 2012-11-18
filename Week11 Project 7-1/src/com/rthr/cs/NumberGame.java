@@ -41,9 +41,8 @@ public class NumberGame
 	
 	/**
 	 * Plays the number game.
-	 * @return A boolean, whether the user has completed the game or not.
 	 */
-	public Boolean play()
+	public void play()
 	{
 		System.out.println("Let's play a game.\nI'm thinking " +
 				"of a number between 1 and 100. Can you guess what it is?" +
@@ -61,7 +60,6 @@ public class NumberGame
 				System.out.println("The number is greater than your guess.");
 		}
 		finishGame();
-		return false;
 	}
 	
 	/**
@@ -89,6 +87,6 @@ public class NumberGame
 	private void finishGame()
 	{
 		System.out.println("That's correct!\nYou guessed "+guesses+
-				" times to get the correct answer "+answer);
+				" times to get the correct answer "+answer+".");
 	}
 }
