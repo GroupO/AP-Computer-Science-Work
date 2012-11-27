@@ -73,7 +73,10 @@ public class NumberGame
 	}
 	
 	/**
-	 * Get a random number to play the game.
+	 * Get a random number to play the game. I chose to use
+	 * Math.random() instead of NextInt() because in my readings
+	 * online, and through my own testing, I discovered that 
+	 * Math.random() is closer to "truly random" than NextInt() is.
 	 * @return A random int, from 1 to 100.
 	 */
 	private int getRandomNumber()
