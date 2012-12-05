@@ -111,10 +111,10 @@ public class StringExercises
 		else
 			System.out.println("String 'ton' not found.");
 		
-		if (name.indexOf("Wish") != -1)
-			System.out.println("Found string 'Wish'.");
+		if (name.indexOf("Wash") != -1)
+			System.out.println("Found string 'Wash'.");
 		else
-			System.out.println("String 'wish' not found.");
+			System.out.println("String 'Wash' not found.");
 		
 		this.endExercise(4);
 	}
