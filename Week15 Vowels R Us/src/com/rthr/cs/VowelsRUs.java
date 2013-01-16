@@ -15,16 +15,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Week14 VowelsRUs Class.
+ * Week17 VowelsRUs Class.
  * @author arthurlockman
  *
  */
 public class VowelsRUs
 {
-	private static FileInputStream fInStream;
-	private static InputStreamReader iStreamReader;
-	private static BufferedReader reader;
-	private String[] data;
 	
 	/**
 	 * Performs the Vowels R Us processing.
@@ -43,8 +39,7 @@ public class VowelsRUs
 	 */
 	private void run() throws IOException
 	{
-		this.openFile();
-		data = this.getData();
+		String[] data = this.getData(this.openFile());
 		
 		for (int i = 0; i < data.length; i++)
 			this.processWord(data[i]);
@@ -54,28 +49,36 @@ public class VowelsRUs
 	
 	/**
 	 * Opens the data file.
+	 * @return A buffered reader, able to read in the file.
 	 */
-	private void openFile()
+	private BufferedReader openFile()
 	{
+		FileInputStream fInStream;
+		InputStreamReader iStreamReader;
+		BufferedReader reader;
+		
 	    try
 		{
-			fInStream = new FileInputStream ("/Users/arthurlockman/Dropbox/School/AP CS/Work/Data Files/vowels.txt/");
+			fInStream = new FileInputStream ("/Users/arthurlockman/Dropbox/School/AP CS/Work/Data Files/vowels.txt");
+		    iStreamReader = new InputStreamReader(fInStream);
+		    reader = new BufferedReader(iStreamReader);
+		    return reader;
 		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
+			System.exit(1);
 		}
-	    
-	    iStreamReader = new InputStreamReader(fInStream);
-	    reader = new BufferedReader(iStreamReader);
+	    return null;
 	}
 	
 	/**
 	 * Gets the data out of the data file, and stores it in a string 
 	 * array.
+	 * @param reader The buffered reader to read the file.
 	 * @return An array of strings containing the data.
 	 * @throws IOException
 	 */
-	private String[] getData() throws IOException
+	private String[] getData(BufferedReader reader) throws IOException
 	{
 		String[] tmpData = new String[4];
 		String line = reader.readLine();
