@@ -13,15 +13,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author arthurlockman
  *
  */
 public class TestGrader
-{
-	char[] answerKey;
-	
+{	
 	/**
 	 * @param args
 	 */
@@ -37,14 +36,16 @@ public class TestGrader
 	public void run()
 	{
 		String[] rawScores = this.getScores("data.txt");
-		int[] numberScores = new int[rawScores.length];
-		char[] letterScores = new char[rawScores.length];
-		int[] students = new int[rawScores.length];
+		String[] processedScores = Arrays.copyOfRange(rawScores, 1, rawScores.length);
+		char[] key = rawScores[0].toCharArray();
+		int[] numberScores = new int[processedScores.length];
+		char[] letterScores = new char[processedScores.length];
+		int[] students = new int[processedScores.length];
 		
-		for (int i = 0; i < rawScores.length; i++)
+		for (int i = 0; i < processedScores.length; i++)
 		{
-			numberScores[i] = this.gradeQuiz(rawScores[i])[1];
-			students[i] = this.gradeQuiz(rawScores[i])[0];
+			numberScores[i] = this.gradeQuiz(processedScores[i], key)[1];
+			students[i] = this.gradeQuiz(processedScores[i], key)[0];
 			letterScores[i] = this.convertToLetterGrade(numberScores[i]);
 		}
 		
@@ -60,7 +61,7 @@ public class TestGrader
 	 * @return The score of the student, and their ID. ID is array[0], 
 	 * score is array[1].
 	 */
-	private int[] gradeQuiz(String scoreAndID)
+	private int[] gradeQuiz(String scoreAndID, char[] key)
 	{
 		int id = Integer.parseInt(scoreAndID.split(" ")[0]);
 		char[] test = scoreAndID.split(" ")[1].toCharArray();
@@ -68,7 +69,7 @@ public class TestGrader
 		
 		for (int i = 0; i < test.length; i++)
 		{
-			if (answerKey[i] != test[i])
+			if (key[i] != test[i])
 				score--;
 		}
 		
@@ -165,7 +166,7 @@ public class TestGrader
 	 * @brief Reads in the project data file from a path relative
 	 * to the class itself.
 	 * @param dataFileName The name of the data file.
-	 * @return The parsed data.
+	 * @return The parsed data, answer key is array[0].
 	 */
 	private String[] getScores(String dataFileName)
 	{
@@ -177,9 +178,7 @@ public class TestGrader
 		String line = null;
 		
 		try
-		{
-			answerKey = fReader.readLine().toCharArray();
-			
+		{	
 			while ((line = fReader.readLine()) != null)
 			{
 				scores.add(line);
