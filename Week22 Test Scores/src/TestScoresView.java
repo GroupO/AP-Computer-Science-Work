@@ -19,10 +19,10 @@ public class TestScoresView
 	{
 		while (true)
 		{
-			System.out.println("start of run method");
-			System.out.println("Number of students: " + model.size());
-			System.out.println("Index of current student: "
-					+ model.currentPosition());
+			//System.out.println("start of run method");
+			//System.out.println("Number of students: " + model.size());
+			//System.out.println("Index of current student: "
+			//		+ model.currentPosition());
 			displayMenu();
 			int command = getCommand("Enter a number [1-11]: ", 1, 11);
 			if (command == 11) break;
@@ -33,11 +33,16 @@ public class TestScoresView
 	private void displayMenu()
 	{
 		System.out.println("MAIN MENU");
-		System.out.println(" 1. Display the current student");
-		System.out.println(" 2. Display the class average");
-		System.out.println(" 3. Display the student with the highest grade");
-		//TODO: Finish this method.
-
+		System.out.println(" 1. Display the current student.");
+		System.out.println(" 2. Display the class average.");
+		System.out.println(" 3. Display the student with the highest grade.");
+		System.out.println(" 4. Display all students.");
+		System.out.println(" 5. Edit the current student.");
+		System.out.println(" 6. Add a new student.");
+		System.out.println(" 7. Move to the first student.");
+		System.out.println(" 8. Move to the last student.");
+		System.out.println(" 9. Move to the next student.");
+		System.out.println("10. Move to the previous student.");
 		System.out.println("11. Quit the program");
 	}
 
@@ -70,26 +75,65 @@ public class TestScoresView
 	{
 		switch (command)
 		{
-		case 1:
+		case 1: //Display the current student.
 			displayStudent();
 			break;
-		case 2:
+		case 2: //Display the class average.
 			System.out.println("Average score = " + model.getClassAverage());
 			break;
-		case 3:
+		case 3: //Display the student with the highest grade.
+			displayHighScore();
 			break;
-		case 4:
+		case 4: //Display all students.
+			displayAllStudents();
 			break;
-		default:
+		case 5: //Edit the current student.
+			editStudent();
+			break;
+		case 6: //Add a new student.
+			addStudent();
+			break;
+		case 7: //Move to the first student.
+			model.first();
+			break;
+		case 8: //Move to the last student.
+			model.last();
+			break;
+		case 9: //Move to the next student.
+			model.next();
+			break;
+		case 10: //Move to the previous student.
+			model.previous();
+			break;
+		case 11: //Quit the program
+			System.exit(0);
 			break;
 		}
-		//TODO: Finish this method.
 	}
 
+	private void displayAllStudents()
+	{
+		if (model.currentStudent() == null) 
+		{ 
+			System.out.println("No student is currently available.\n"); 
+			return;
+		}
+		
+		model.first();
+		
+		for (int i = 1; i <= model.size(); i++)
+		{
+			model.next();
+			displayStudent();
+		}
+		//TODO: Finish this. 
+		
+	}
+	
 	private void displayStudent()
 	{
 		Student s = model.currentStudent();
-		if (s == null) System.out.println("No student is currently available");
+		if (s == null) System.out.println("No student is currently available.\n");
 		else System.out.println(s);
 	}
 
@@ -98,22 +142,22 @@ public class TestScoresView
 		Student s = model.getHighScore();
 		if (s == null)
 		{
-			//TODO: Finish this method.
-		} else
+			System.out.println("No student is currently available.\n");
+			return;
+		} 
+		else
 		{
-			//TODO: Finish this method.
+			System.out.println(s.toString());
 		}
 	}
 
 	private void addStudent()
 	{
-		Student s = new Student();
-		Scanner reader = new Scanner(System.in);
-		System.out.print("Enter the name: ");
-		s.setName(reader.nextLine());
+		Student s = new Student(getStrInput("Enter the name: "), 
+				getIntInput("How many tests does this student have?"));
 		for (int i = 1; i <= s.getNumberOfTests(); i++)
 		{
-			//TODO: Finish this method.
+			s.setScore(i, getIntInput("Enter score "+i+"."));
 		}
 		String message = s.validateData();
 		if (message != null) System.out.println(message);
@@ -121,14 +165,14 @@ public class TestScoresView
 		{
 			message = model.add(s);
 			if (message != null) System.out.println(message);
-			else System.out.println("Student added");
+			else System.out.println("Student added.\n");
 		}
 	}
 
 	private void editStudent()
 	{
 		Student s = model.currentStudent();
-		if (s == null) System.out.println("No student is currently available");
+		if (s == null) System.out.println("No student is currently available.\n");
 		else
 		{
 			// Work on a temporary copy
@@ -138,7 +182,6 @@ public class TestScoresView
 					+ "2. Change a score\n" 
 					+ "3. View the student\n"
 					+ "4. Quit this menu\n";
-			Scanner reader = new Scanner(System.in);
 			int command = 1;
 			while (command != 4)
 			{
@@ -147,25 +190,44 @@ public class TestScoresView
 				switch (command)
 				{
 				case 1:
-					// Change the name
+					temp.setName(getStrInput("Please enter a new name for the student."));
 					break;
 				case 2:
-					// Change a score
+					temp.setScore(getIntInput("Which test number?"), 
+							getIntInput("What score did this test earn?"));
 					break;
 				case 3:
-					// View the student
+					System.out.println(temp);
 					break;
-				case 4:
-					// Quit this menu
-					// Check for valid data before writing to database
-					String message = temp.validateData();
-					if (message != null) System.out.println(message);
-					else model.replace(temp);
-					break;
-					
-					//TODO: Finish this method.
 				} 
 			}
+			
+			String message = temp.validateData();
+			if (message != null) System.out.println(message);
+			else model.replace(temp);
+			return;
 		}
+	}
+	
+	/**
+	 * @brief Get string input from the command line.
+	 * @param prompt The prompt to prompt for input.
+	 */
+	private String getStrInput(String prompt)
+	{
+		System.out.println(prompt); 
+		Scanner reader = new Scanner(System.in);
+		return reader.nextLine();
+	}
+	
+	/**
+	 * @brief Get int input from the command line.
+	 * @param prompt The prompt to prompt for input.
+	 */
+	private int getIntInput(String prompt)
+	{
+		System.out.println(prompt); 
+		Scanner reader = new Scanner(System.in);
+		return reader.nextInt();
 	}
 }
