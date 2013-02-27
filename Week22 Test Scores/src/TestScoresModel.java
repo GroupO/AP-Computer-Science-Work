@@ -1,9 +1,18 @@
-// Case Study 9.1: TestScoresModel class
+import java.util.ArrayList;
+
+/**
+ * Author:  Arthur Lockman
+ * Date:    Feb 25, 2013
+ * School:  Gorham High School
+ * 
+ * Project: Week22 Test Scores
+ * Package: 
+ */
 
 public class TestScoresModel
 {
 
-	private Student[] students; // Array of students
+	private ArrayList<Student> students; // Array of students
 	private int indexSelectedStudent; // Position of current student
 	private int studentCount; // Current number of students
 
@@ -13,21 +22,17 @@ public class TestScoresModel
 		// Initialize the data
 		indexSelectedStudent = -1;
 		studentCount = 0;
-		students = new Student[10];
+		students = new ArrayList<Student>();
 	}
 
 	// Mutator methods for adding and replacing students
 
 	public String add(Student s)
 	{
-		if (studentCount == students.length) return "SORRY: student list is full";
-		else
-		{
-			students[studentCount] = s;
-			indexSelectedStudent = studentCount;
-			studentCount++;
-			return null;
-		}
+		students.add(s);
+		indexSelectedStudent = studentCount;
+		studentCount++;
+		return null;
 	}
 
 	public String replace(Student s)
@@ -35,7 +40,7 @@ public class TestScoresModel
 		if (indexSelectedStudent == -1) return "Must add a student first";
 		else
 		{
-			students[indexSelectedStudent] = s;
+			students.set(indexSelectedStudent, s);
 			return null;
 		}
 	}
@@ -49,7 +54,7 @@ public class TestScoresModel
 		else
 		{
 			indexSelectedStudent = 0;
-			s = students[indexSelectedStudent];
+			s = students.get(indexSelectedStudent);
 		}
 		return s;
 	}
@@ -61,7 +66,7 @@ public class TestScoresModel
 		else
 		{
 			indexSelectedStudent = Math.max(0, indexSelectedStudent - 1);
-			s = students[indexSelectedStudent];
+			s = students.get(indexSelectedStudent);
 		}
 		return s;
 	}
@@ -74,7 +79,7 @@ public class TestScoresModel
 		{
 			indexSelectedStudent = Math.min(studentCount - 1,
 					indexSelectedStudent + 1);
-			s = students[indexSelectedStudent];
+			s = students.get(indexSelectedStudent);
 		}
 		return s;
 	}
@@ -86,7 +91,7 @@ public class TestScoresModel
 		else
 		{
 			indexSelectedStudent = studentCount - 1;
-			s = students[indexSelectedStudent];
+			s = students.get(indexSelectedStudent);
 		}
 		return s;
 	}
@@ -96,7 +101,7 @@ public class TestScoresModel
 	public Student currentStudent()
 	{
 		if (indexSelectedStudent == -1) return null;
-		else return students[indexSelectedStudent];
+		else return students.get(indexSelectedStudent);
 	}
 
 	public int size()
@@ -114,7 +119,7 @@ public class TestScoresModel
 		if (studentCount == 0) return 0;
 		int sum = 0;
 		for (int i = 0; i < studentCount; i++)
-			sum += students[i].getAverage();
+			sum += students.get(i).getAverage();
 		return sum / studentCount;
 	}
 
@@ -123,10 +128,10 @@ public class TestScoresModel
 		if (studentCount == 0) return null;
 		else
 		{
-			Student s = students[0];
+			Student s = students.get(0);
 			for (int i = 1; i < studentCount; i++)
-				if (s.getHighScore() < students[i].getHighScore())
-					s = students[i];
+				if (s.getHighScore() < students.get(i).getHighScore())
+					s = students.get(i);
 			return s;
 		}
 	}
@@ -135,7 +140,7 @@ public class TestScoresModel
 	{
 		String result = "";
 		for (int i = 0; i < studentCount; i++)
-			result = result + students[i] + "\n";
+			result = result + students.get(i) + "\n";
 		return result;
 	}
 }

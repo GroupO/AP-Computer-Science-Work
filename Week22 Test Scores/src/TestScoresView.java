@@ -1,5 +1,11 @@
-// You need to complete this program you will
-// not be able to run this program until you do.
+/**
+ * Author:  Arthur Lockman
+ * Date:    Feb 25, 2013
+ * School:  Gorham High School
+ * 
+ * Project: Week22 Test Scores
+ * Package: 
+ */
 
 import java.util.Scanner;
 
@@ -111,32 +117,45 @@ public class TestScoresView
 		}
 	}
 
+	/**
+	 * @brief Displays all students currently in the TestScoresModel.
+	 * Returns the model position to where it was when the 
+	 * method was run.
+	 */
 	private void displayAllStudents()
 	{
-		if (model.currentStudent() == null) 
-		{ 
-			System.out.println("No student is currently available.\n"); 
-			return;
+		int selected = model.currentPosition();
+		System.out.println(model.first());
+		System.out.println();
+		
+		for (int i = 1; i < model.size(); i++)
+		{
+			System.out.println(model.next());
+			System.out.println();
 		}
 		
 		model.first();
-		
-		for (int i = 1; i <= model.size(); i++)
+		while (model.currentPosition() != selected)
 		{
 			model.next();
-			displayStudent();
 		}
-		//TODO: Finish this. 
 		
 	}
 	
+	/**
+	 * @brief Displays the current student.
+	 */
 	private void displayStudent()
 	{
 		Student s = model.currentStudent();
 		if (s == null) System.out.println("No student is currently available.\n");
 		else System.out.println(s);
+		System.out.println();
 	}
 
+	/**
+	 * @brief Displays the student with the highest score.
+	 */
 	private void displayHighScore()
 	{
 		Student s = model.getHighScore();
@@ -148,9 +167,13 @@ public class TestScoresView
 		else
 		{
 			System.out.println(s.toString());
+			System.out.println();
 		}
 	}
 
+	/**
+	 * @brief Adds a student to the TestScoresModel.
+	 */
 	private void addStudent()
 	{
 		Student s = new Student(getStrInput("Enter the name: "), 
@@ -169,6 +192,9 @@ public class TestScoresView
 		}
 	}
 
+	/**
+	 * @brief Edits the currently selected student in the TestScoresModel.
+	 */
 	private void editStudent()
 	{
 		Student s = model.currentStudent();
