@@ -87,7 +87,9 @@ public class CrabCritter extends Critter
             setDirection(getDirection() + angle);
         }
         else
-            super.makeMove(loc);
+        {
+        	super.makeMove(loc);
+        }
     }
     
     /**

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Demo1/Demo1.iml" filepath="$PROJECT_DIR$/Demo1/Demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Example 2.3/Example 2.3.iml" filepath="$PROJECT_DIR$/Example 2.3/Example 2.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Example 2.4/Example 2.4.iml" filepath="$PROJECT_DIR$/Example 2.4/Example 2.4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Example 2.5/Example 2.5.iml" filepath="$PROJECT_DIR$/Example 2.5/Example 2.5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Example 2.6/Example 2.6.iml" filepath="$PROJECT_DIR$/Example 2.6/Example 2.6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GW BugBox/GW BugBox.iml" filepath="$PROJECT_DIR$/GW BugBox/GW BugBox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GW Critters/GW Critters.iml" filepath="$PROJECT_DIR$/GW Critters/GW Critters.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GW FirstProject/GW FirstProject.iml" filepath="$PROJECT_DIR$/GW FirstProject/GW FirstProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PetShop Week 21/PetShop Week 21.iml" filepath="$PROJECT_DIR$/PetShop Week 21/PetShop Week 21.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Project 2.6/Project 2.6.iml" filepath="$PROJECT_DIR$/Project 2.6/Project 2.6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Project 2.7/Project 2.7.iml" filepath="$PROJECT_DIR$/Project 2.7/Project 2.7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VHSFileInputDemo/VHSFileInputDemo.iml" filepath="$PROJECT_DIR$/VHSFileInputDemo/VHSFileInputDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week10 Project 3-5/Week10 Project 3-5.iml" filepath="$PROJECT_DIR$/Week10 Project 3-5/Week10 Project 3-5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week11 Project 7-1/Week11 Project 7-1.iml" filepath="$PROJECT_DIR$/Week11 Project 7-1/Week11 Project 7-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week13 String Exercises/Week13 String Exercises.iml" filepath="$PROJECT_DIR$/Week13 String Exercises/Week13 String Exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week13 Triangle Exercises/Week13 Triangle Exercises.iml" filepath="$PROJECT_DIR$/Week13 Triangle Exercises/Week13 Triangle Exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week15 Vowels R Us/Week15 Vowels R Us.iml" filepath="$PROJECT_DIR$/Week15 Vowels R Us/Week15 Vowels R Us.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week18 Array Exercises/Week18 Array Exercises.iml" filepath="$PROJECT_DIR$/Week18 Array Exercises/Week18 Array Exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week19 Group Project/Week19 Group Project.iml" filepath="$PROJECT_DIR$/Week19 Group Project/Week19 Group Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week19 Test Project/Week19 Test Project.iml" filepath="$PROJECT_DIR$/Week19 Test Project/Week19 Test Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week22 Test Scores/Week22 Test Scores.iml" filepath="$PROJECT_DIR$/Week22 Test Scores/Week22 Test Scores.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week25 Sorting Project/Week25 Sorting Project.iml" filepath="$PROJECT_DIR$/Week25 Sorting Project/Week25 Sorting Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week26 Sorting Project/Week26 Sorting Project.iml" filepath="$PROJECT_DIR$/Week26 Sorting Project/Week26 Sorting Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week3 Project/Week3 Project.iml" filepath="$PROJECT_DIR$/Week3 Project/Week3 Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week6 Project 3-4/Week6 Project 3-4.iml" filepath="$PROJECT_DIR$/Week6 Project 3-4/Week6 Project 3-4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week6 Project 3-4 Mod 1/Week6 Project 3-4 Mod 1.iml" filepath="$PROJECT_DIR$/Week6 Project 3-4 Mod 1/Week6 Project 3-4 Mod 1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Week8 Project 3-5/Week8 Project 3-5.iml" filepath="$PROJECT_DIR$/Week8 Project 3-5/Week8 Project 3-5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WhileAndFile/WhileAndFile.iml" filepath="$PROJECT_DIR$/WhileAndFile/WhileAndFile.iml" />
+    </modules>
+  </component>
+</project>
+
